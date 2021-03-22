@@ -18,4 +18,22 @@ func main() {
 	mp2[1] = "pony"
 	fmt.Println(mp1[1]) //tom
 	fmt.Println(mp2[1]) //pony
+	fmt.Println("===========")
+	map2()
+}
+func map2() {
+	type User struct {
+		name string
+		age int
+	}
+	ma := make(map[int]User)
+	andes :=User{
+		name: "andes",
+		age: 18,
+	}
+	ma[1] = andes
+	//ma[1].age = 19 //Error，不能通过map引用直接修改
+	andes.age = 19
+	ma[1] = andes //必须整体替换value
+	fmt.Println("%v\n",ma)
 }
