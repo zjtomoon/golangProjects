@@ -35,5 +35,5 @@ func map2() {
 	//ma[1].age = 19 //Error，不能通过map引用直接修改
 	andes.age = 19
 	ma[1] = andes //必须整体替换value
-	fmt.Println("%v\n",ma)
+	fmt.Printf("%v\n",ma)
 }
