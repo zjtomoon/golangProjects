@@ -1,4 +1,5 @@
 package main
+//TCP粘包
 
 import (
 	"fmt"
