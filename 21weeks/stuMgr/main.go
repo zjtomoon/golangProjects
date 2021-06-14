@@ -14,7 +14,7 @@ var smr studentMgr //声明一个全局变量smr 注意声明没有"="
 
 //菜单函数
 func showMenu()  {
-	fmt.Println("welcome sms !")
+	fmt.Println("------------------welcome sms !----------------")
 	fmt.Println(`
 	1、查看所有学生信息
 	2、添加学生信息
