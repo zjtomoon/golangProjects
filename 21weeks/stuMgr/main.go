@@ -10,7 +10,7 @@ import (
 //1、保存了一些数据 --->结构体的字段
 //2、有三个功能     --->结构体的方法
 
-var smr = studentMgr //声明一个全局变量smr
+var smr studentMgr //声明一个全局变量smr 注意声明没有"="
 
 //菜单函数
 func showMenu()  {
@@ -27,9 +27,10 @@ func showMenu()  {
 func main()  {
 
 	smr = studentMgr{ //修改的全局的那个变量
-		allStudent: make(map[int64]student,100)
+		allStudent: make(map[int64]student,100),
 	}
 	for {
+
 		showMenu()
 		//等待用户输入选项
 		fmt.Print("请输入序号：")
