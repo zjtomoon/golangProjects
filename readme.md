@@ -13,7 +13,8 @@
  3、叶子节点用指针连接，提高区间访问的性能
 ```
 
-![avatar](./pictures/B+%20Tree.jpg)
+![avatar](./pictures/B+Tree.png)
+![avatar](./pictures/B+Tree2.jpg)
 
 + B Tree
 ```
@@ -22,7 +23,7 @@
  3、节点中的数据索引从左到右递增排列
 ```
 
-![avatar](./pictures/B%20Tree.jpg)
+![avatar](./pictures/B%20Tree.png)
 
 ### 3、Docker为什么比VM快？
 + 1、Docker有着比虚拟机更少的抽象层
