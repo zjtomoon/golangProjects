@@ -59,6 +59,10 @@ func loadIni(fileName string,data interface{}) (err error) {
 	 for idx,line := range lineSlice {
 		 // 去掉字符串首尾地空格
 		 line = strings.TrimSpace(line)
+		 //如果是空行就跳过
+		 if len(line) == 0 {
+			 continue
+		 }
 		 // 2.1 如果是注释就跳过
 		 if strings.HasPrefix(line,";") || strings.HasPrefix(line,"#") {
 			 continue
@@ -89,7 +93,10 @@ func loadIni(fileName string,data interface{}) (err error) {
 		 } else {
 			// 2.3 如果不是[开头就是分割地键值对
 			// 1、以等号分割这一行，等号左边是key,等号右边是value
-			
+			if strings.Index(line,"=") == -1 || strings.HasPrefix(line,"=") {
+				err = fmt.Errorf("line:%d synatx error",idx + 1)
+				return
+			}
 			// 2、根据structName 去 data里面把对应的嵌套结构体取出来
 			// 3、遍历嵌套结构体的每一个字段，判断tag是不是key
 			// 4、如果key == tag,给这个字段赋值
