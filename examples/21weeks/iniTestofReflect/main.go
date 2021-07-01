@@ -98,6 +98,11 @@ func loadIni(fileName string,data interface{}) (err error) {
 				return
 			}
 			// 2、根据structName 去 data里面把对应的嵌套结构体取出来
+			v := reflect.ValueOf(data)
+			structObj := v.Elem().FieldByName(structName)
+			if structObj.Kind() != reflect.Struct {
+				fmt.Errorf("data中的字段应该是一个结构体",structName)
+			}
 			// 3、遍历嵌套结构体的每一个字段，判断tag是不是key
 			// 4、如果key == tag,给这个字段赋值
 
