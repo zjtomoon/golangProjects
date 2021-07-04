@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"reflect"
 	"strings"
+	"strconv"
 )
 
 // ini配置文件解析器
@@ -97,15 +98,66 @@ func loadIni(fileName string,data interface{}) (err error) {
 				err = fmt.Errorf("line:%d synatx error",idx + 1)
 				return
 			}
+			index := strings.Index(line,"=")
+			key := strings.TrimSpace(line[:index])
+			value := strings.TrimSpace(line[index+1:])
 			// 2、根据structName 去 data里面把对应的嵌套结构体取出来
 			v := reflect.ValueOf(data)
 			structObj := v.Elem().FieldByName(structName)
+			sValue := v.Elem().FieldByName(structName) //拿到嵌套结构体的值信息
+			sType := sValue.Type() //拿到嵌套结构体的类型信息
 			if structObj.Kind() != reflect.Struct {
 				fmt.Errorf("data中的字段应该是一个结构体",structName)
 			}
+			var fileName string
+			var fileType reflect.StructField
 			// 3、遍历嵌套结构体的每一个字段，判断tag是不是key
+			 for i := 0 ; i < structObj.NumField(); i++ {
+				 field := sType.Field(i) //tag信息是存储在类型信息中的
+				 fileType = field
+				 if field.Tag.Get("ini") == key {
+				 	//找到对应的字段
+				 	fileName = field.Name
+				 	break
+				 }
+			 }
 			// 4、如果key == tag,给这个字段赋值
-
+			// 4.1 根据fileName去取出这个字段
+			if len(fileName) == 0 {
+				//在结构体中找不到对应的字符
+				continue
+			}
+			fileObj := sValue.FieldByName(fileName)
+			// 4.2对其赋值
+			fmt.Println(fileName,fileObj.Type().Kind())
+			 switch fileType.Type.Kind() {
+			 case reflect.String:
+				 fileObj.SetString(value)
+			 case reflect.Int,reflect.Int8,reflect.Int32,reflect.Int64:
+			 	var valueInt int64
+			 	valueInt,err = strconv.ParseInt(value,10,64)
+			 	if err != nil {
+			 		err = fmt.Errorf("line:%d value type error",idx+1)
+			 		return
+				}
+			 	fileObj.SetInt(valueInt)
+			 case reflect.Bool:
+			 	 var valueBool bool
+				 valueBool,err =strconv.ParseBool(value)
+				 if err != nil {
+				 	err = fmt.Errorf("line:%d value type error",idx+1)
+				 	return
+				 }
+				 fileObj.SetBool(valueBool)
+			 case reflect.Float32,reflect.Float64:
+				 var valueFloat float64
+				 valueFloat,err = strconv.ParseFloat(value)
+				 if err != nil {
+				 	err = fmt.Errorf("line:%d value type error",idx+1)
+				 	return
+				 }
+				 fileObj.SetFloat(valueFloat)
+			 }
 		 }
 		 
 	 	
@@ -120,5 +172,5 @@ func main()  {
 		fmt.Printf("load ini failed,err:%v\n",err)
 		return
 	}
-	fmt.Println(cfg)
+	fmt.Printf("%#v\n",cfg)
 }
