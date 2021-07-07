@@ -11,7 +11,7 @@ import (
 //3、在main中从ch22取值打印出来
 var wg sync.WaitGroup
 var once sync.Once
-func f1(ch1 chan int) {
+func f1(ch1 chan<- int) {
 	defer wg.Done()
 	for i := 0 ; i < 100 ;i++ {
 		ch1 <- i
@@ -19,7 +19,9 @@ func f1(ch1 chan int) {
 	close(ch1)
 }
 
-func f2(ch1,ch2 chan int) {
+//ch1 从channel中取值
+//ch2 向通道中存入
+func f2(ch1 <-chan int,ch2 chan<- int) {
 	defer wg.Done()
 	for {
 		x,ok := <-ch1
