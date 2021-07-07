@@ -15,14 +15,14 @@ import (
 */
 // job ...
 type job struct {
-  	id int
-  	value  int64
+  	id 		int
+  	value  	int64
 }
 
 // result...
 type result struct {
-  	job	   *job
-  	sum int64
+  	job		*job
+  	sum 	int64
 }
 
 var jobChan = make(chan *job, 100)
