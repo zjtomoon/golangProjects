@@ -151,7 +151,7 @@ func loadIni(fileName string,data interface{}) (err error) {
 				 fileObj.SetBool(valueBool)
 			 case reflect.Float32,reflect.Float64:
 				 var valueFloat float64
-				 valueFloat,err = strconv.ParseFloat(value)
+				 valueFloat,err = strconv.ParseFloat(value,64)
 				 if err != nil {
 				 	err = fmt.Errorf("line:%d value type error",idx+1)
 				 	return
