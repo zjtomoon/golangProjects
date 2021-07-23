@@ -23,7 +23,7 @@
  3、节点中的数据索引从左到右递增排列
 ```
 
-![B Tree](pictures/B Tree.png)
+![BTree](pictures/BTree.png)
 
 ### 3、Docker为什么比VM快？
 + 1、Docker有着比虚拟机更少的抽象层
