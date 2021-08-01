@@ -1,4 +1,4 @@
-# go语言学习
+# go语言学习入门
 
 ## go语言面试题整理
 
@@ -46,6 +46,11 @@
 ```
 
 ## 《GO语言核心编程》学习笔记
+
+# Go语言进阶
++ 使用go重写redis 
++ 使用go重写sqlite
++ 上述项目完成后分离到新建的github仓库，并发布linux(ubuntu14、centos7)、windows(windows 8)release版本
 
 
 
