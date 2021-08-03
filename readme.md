@@ -50,7 +50,9 @@
 # Go语言进阶
 + 使用go重写redis 
 + 使用go重写sqlite
-+ 上述项目完成后分离到新建的github仓库，并发布linux(ubuntu14、centos7)、windows(windows 8)release版本
++ redis、sqlite项目完成后分离到新建的github仓库，并发布linux(ubuntu14、centos7)、windows(windows 8)release版本
++ 学习kubernetes 1.15.11源码 自己编写
++ k8s项目完成后分离到新建的github仓库，并发布linux(ubuntu14、centos7)、windows(windows 8)release版本
 
 
 
