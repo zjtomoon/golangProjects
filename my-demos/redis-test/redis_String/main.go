@@ -35,7 +35,7 @@ func main() {
 	// 转换错误示例：
 	//因为返回的 r 是 interface{},而 name 对应的值是 string,因此需要转换
 	// nameString := r.(string)
-	fmt.Println("Read successfully!\n%s\n\n",r)
+	fmt.Printf("Read successfully!\n%s\n\n",r)
 	multiSet()
 
 }
@@ -75,7 +75,7 @@ func multiSet()  {
 	}
 
 	for i, v := range r {
-		fmt.Println("%T\tr[%d] = %v\n",v,i,v)
+		fmt.Printf("%T\tr[%d] = %v\n",v,i,v)
 	}
 
 }
