@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-
+//稀疏数组
 type ValNode struct {
 	row int
 	col int
