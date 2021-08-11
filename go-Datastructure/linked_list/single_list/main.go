@@ -42,7 +42,7 @@ func InsertHeroNode2(head *HeroNode,newHeroNode *HeroNode)  {
 		} else if temp.next.no >= newHeroNode.no {
 			//说明newHeroNode就应该插入到temp后面
 			break
-		}else if temp.next.no == newHeroNode {
+		}else if temp.next.no == newHeroNode.no {
 			//说明我们的链表中已经有这个no,就不用插入了
 			flag = false
 			break
