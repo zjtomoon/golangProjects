@@ -48,7 +48,7 @@ func (this *CircleQueue) ListQueue() {
 	//设计一个辅助的变量 指向head
 	tempHead := this.head
 	for i := 0 ; i  < size ; i++ {
-		fmt.Printf("add[%d] = %d\t",tempHead,this.array[tempHead])
+		fmt.Printf("arr[%d] = %d\t",tempHead,this.array[tempHead])
 		tempHead = (tempHead + 1 ) % this.maxSize
 	}
 	fmt.Println()
