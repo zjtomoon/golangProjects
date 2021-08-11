@@ -31,6 +31,7 @@ func (this *Queue) GetQueue() (val int, err error) {
 	if this.rear == this.front {
 		return -1,errors.New("queue empty")
 	}
+	//front表示队首前一位
 	this.front++
 	val = this.array[this.front]
 	return  val,err
@@ -41,7 +42,7 @@ func (this *Queue) GetQueue() (val int, err error) {
 func (this * Queue) ShowQueue()  {
 	fmt.Println("队列当前的情况是：")
 	//this.front 不包含队首的元素
-	for i := this.front;i <= this.rear ; i++ {
+	for i := this.front + 1;i <= this.rear ; i++ {
 		fmt.Printf("array[%d] = %d\t",i,this.array[i])
 	}
 	fmt.Println()
