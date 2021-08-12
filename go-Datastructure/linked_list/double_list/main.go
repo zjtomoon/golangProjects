@@ -105,7 +105,7 @@ func ListHeroNode(head *HeroNode) {
 	}
 	//2. 遍历这个链表
 	for {
-		fmt.Println("[%d , %s , %s]==>", temp.next.no, temp.next.name, temp.next.nickname)
+		fmt.Printf("[%d , %s , %s]==>", temp.next.no, temp.next.name, temp.next.nickname)
 		//判断是否链表后
 		temp = temp.next
 		if temp.next == nil {
@@ -133,7 +133,7 @@ func ListHeroNode2(head *HeroNode) {
 
 	//3. 遍历这个链表
 	for {
-		fmt.Println("[%d , %s , %s]==>", temp.no, temp.name, temp.nickname)
+		fmt.Printf("[%d , %s , %s]==>", temp.no, temp.name, temp.nickname)
 		//判断是否链表头
 		temp = temp.pre
 		if temp.pre == nil {
@@ -169,6 +169,7 @@ func main() {
 	InsertHeroNode2(head, hero3)
 	InsertHeroNode2(head, hero2)
 	ListHeroNode(head)
+	fmt.Println()
 	fmt.Println("逆序打印")
 	ListHeroNode2(head)
 
