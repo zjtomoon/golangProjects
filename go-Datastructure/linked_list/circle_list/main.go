@@ -85,7 +85,7 @@ func DelCatNode(head *CatNode,id int) *CatNode {
 			}
 			//恭喜找到，我们也可以直接删除
 			helper.next = temp.next
-			fmt.Printf("猫猫= %d\n",id)
+			fmt.Printf("删除的猫猫= %d\n",id)
 			flag = false
 			break
 		}
@@ -97,7 +97,7 @@ func DelCatNode(head *CatNode,id int) *CatNode {
 	if flag {
 		if temp.no == id {
 			helper.next = temp.next
-			fmt.Printf("猫猫= %d\n",id)
+			fmt.Printf("删除的猫猫= %d\n",id)
 		} else {
 			fmt.Printf("对不起，没有no = %d\n",id)
 		}
