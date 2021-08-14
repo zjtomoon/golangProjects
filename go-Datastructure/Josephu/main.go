@@ -41,7 +41,7 @@ func AddBoy(num int) *Boy {
 		}
 	}
 
-	return first
+	return first //返回头节点
 }
 //显示单向的环形链表[遍历]
 func ShowBoy(first *Boy)  {
@@ -52,7 +52,7 @@ func ShowBoy(first *Boy)  {
 		return
 	}
 
-	//创建一个指针，帮助遍历
+	//创建一个指针，帮助遍历 【这一步说明至少有一个boy】
 	curBoy := first
 	for {
 		fmt.Printf("小孩编号= %d -> ",curBoy.No)
