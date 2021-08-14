@@ -101,7 +101,7 @@ func PlayGame(first *Boy,startNo int,countNum int)  {
 	//5.开始数countNum.然后就删除first指向的小孩
 	for {
 		//开始数countNum-1次
-		for i := 1; i < countNum - 1; i++ {
+		for i := 1; i <= countNum - 1; i++ {
 			first = first.Next
 			tail = tail.Next
 		}
