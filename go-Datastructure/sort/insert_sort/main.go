@@ -81,6 +81,6 @@ func main() {
 	InsertSort(&arr)
 	end := time.Now()
 	fmt.Println(arr)
-	fmt.Println("插入排序耗时 = ",end.Sub(start))
+	fmt.Println("插入排序耗时 = ",end.Sub(start)) //插入排序耗时 =  1.6239987s
 	fmt.Println("main函数")
 }
