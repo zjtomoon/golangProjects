@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 //编写一个函数，完成老鼠找路
 //myMap *[8][7]int地图，保证是同一个地图，使用引用
 //i,j表示对地图德哪个点进行测试
@@ -47,9 +49,33 @@ func main() {
 	}
 
 	//先把地图的最左和最右设置为1
-	for i := 0 ; i < 9 ; i ++ {
+	for i := 0 ; i < 8 ; i ++ {
 		myMap[i][0] = 1
 		myMap[i][6] = 1
+	}
+
+	myMap[3][1] = 1
+	myMap[3][2] = 1
+	myMap[3][3] = 1
+	myMap[3][4] = 1
+
+	//输出地图
+	for i := 0 ; i < 8 ; i++ {
+		for j := 0 ; j < 7 ; j++ {
+			fmt.Print(myMap[i][j]," ")
+		}
+		fmt.Println()
+	}
+
+	//使用测试
+	setWay(&myMap, 1, 1)
+	fmt.Println("探测完毕...")
+	//输出地图
+	for i := 0 ; i < 8 ; i++ {
+		for j := 0 ; j < 7 ; j++ {
+			fmt.Println(myMap[i][j]," ")
+		}
+		fmt.Println()
 	}
 
 }
