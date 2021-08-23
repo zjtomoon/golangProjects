@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 //定义emp
 type Emp struct {
@@ -119,5 +122,46 @@ func (this *HashTable) FindById(id int) *Emp {
 }
 
 func main() {
+	key := ""
+	id := 0
+	name := ""
+	var hashtable HashTable
+	for {
+		fmt.Println("================雇员系统菜单===============")
+		fmt.Println("input 表示添加雇员")
+		fmt.Println("show 表示显示雇员")
+		fmt.Println("find 表示查找雇员")
+		fmt.Println("exit 表示退出系统")
+		fmt.Println("请输入你的选择")
+		fmt.Scanln(&key)
+		switch key {
+		case "input":
+			fmt.Println("输入雇员id")
+			fmt.Scanln(&id)
+			fmt.Println("输入雇员name")
+			fmt.Scanln(&name)
+			emp := &Emp{
+				Id:id,
+				Name:name,
+			}
+			hashtable.Insert(emp)
+		case "show":
+			hashtable.ShowAll()
+		case "find":
+			fmt.Println("请输入id编号：")
+			fmt.Scanln(&id)
+			emp := hashtable.FindById(id)
+			if emp == nil {
+				fmt.Printf("id = %d 的雇员不存在\n",id)
+			} else {
+				//编写一个方法，显示雇员信息
+				emp.ShowMe()
+			}
+		case "exit":
+			os.Exit(0)
+		default:
+			fmt.Println("输入错误")
 
+		}
+	}
 }
