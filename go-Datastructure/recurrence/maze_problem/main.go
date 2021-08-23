@@ -16,7 +16,7 @@ func setWay(myMap *[8][7]int,i int, j int) bool {
 			myMap[i][j] = 2
 			if setWay(myMap,i + 1 , j) { //下
 				return true
-			} else if setWay(myMap, i + 1 , j) { //右
+			} else if setWay(myMap, i , j + 1) { //右
 				return true
 			} else if setWay(myMap, i - 1 , j) { //上
 				return true
@@ -73,7 +73,7 @@ func main() {
 	//输出地图
 	for i := 0 ; i < 8 ; i++ {
 		for j := 0 ; j < 7 ; j++ {
-			fmt.Println(myMap[i][j]," ")
+			fmt.Print(myMap[i][j]," ")
 		}
 		fmt.Println()
 	}
