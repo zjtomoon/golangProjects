@@ -28,7 +28,7 @@ type EmpLink struct {
 func (this *EmpLink) Insert(emp *Emp)  {
 	cur := this.Head //这是辅助指针
 	var pre *Emp = nil //这是一个辅助指针 pre 在cur前面
-	//如果当时的EmpLink就是一个空链表
+	//如果当前的EmpLink就是一个空链表
 	if cur == nil {
 		this.Head = emp //完成
 		return
