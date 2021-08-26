@@ -9,5 +9,4 @@ func main() {
 	//默认使用了2个中间件Logger(),Recovery()
 	r := gin.Default()
 	//路由组1 ，处理GET请求
-
 }
