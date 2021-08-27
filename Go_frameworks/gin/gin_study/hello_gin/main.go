@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// 1.创建路由
-	r := gin.Default(
+	r := gin.Default()
 	// 2. 绑定路由规则，执行的函数
 	//gin.Context,封装request和reponse
 	r.GET("/", func(c *gin.Context) {
