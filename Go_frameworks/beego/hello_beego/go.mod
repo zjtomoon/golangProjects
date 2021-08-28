@@ -1,4 +1,4 @@
-module hello_beego
+module golangProjects/Go_frameworks/beego/hello_beego
 
 go 1.13
 
