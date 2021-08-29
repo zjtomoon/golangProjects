@@ -2,12 +2,8 @@
 package Reader_interface
 
 import (
-	"fmt"
 	"io"
 )
-
-func ReaderExample() {
-}
 
 func ReadFrom(reader io.Reader, num int) ([]byte, error) {
 	p := make([]byte, num)
@@ -16,19 +12,6 @@ func ReadFrom(reader io.Reader, num int) ([]byte, error) {
 		return p[:n], nil
 	}
 	return p, err
-}
-
-func readerMenu() {
-	fmt.Println("")
-	fmt.Println("*******从不同来源读取数据*********")
-	fmt.Println("*******请选择数据源，请输入：*********")
-	fmt.Println("1 表示 标准输入")
-	fmt.Println("2 表示 普通文件")
-	fmt.Println("3 表示 从字符串")
-	fmt.Println("4 表示 从网络")
-	fmt.Println("b 返回上级菜单")
-	fmt.Println("q 退出")
-	fmt.Println("***********************************")
 }
 
 // 从标准输入读取
