@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	file, err := os.Create("writeAt.txt")
+	file, err := os.Create("./writeAt.txt")
 	if err != nil {
 		panic(err)
 	}
