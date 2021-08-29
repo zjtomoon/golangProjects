@@ -1,8 +1,8 @@
 package main
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -11,6 +11,6 @@ func main() {
 	fmt.Println(s2)
 }
 
-func replaceSpace(s string) string  {
-	return strings.Replace(s," ","%20",-1)
+func replaceSpace(s string) string {
+	return strings.Replace(s, " ", "%20", -1)
 }
