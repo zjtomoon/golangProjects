@@ -1,1 +1,5 @@
-package ring
+package main
+
+func main() {
+
+}
