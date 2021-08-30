@@ -21,3 +21,5 @@ func main() {
 	line, err = reader.ReadSlice('\n')
 	fmt.Printf("line: %s \t error : %s \n", line, err)
 }
+
+//ReadSlice返回的[]byte是指向Reader中的buffer,而不是copy一份返回
