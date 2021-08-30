@@ -5,8 +5,8 @@ import (
 	"os"
 )
 
-func main()  {
-	file,err := os.Open("./writeAt.txt")
+func main() {
+	file, err := os.Open("./writeAt.txt")
 	if err != nil {
 		panic(err)
 	}

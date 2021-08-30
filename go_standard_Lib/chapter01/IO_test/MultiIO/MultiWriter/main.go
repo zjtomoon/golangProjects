@@ -1,17 +1,17 @@
 package main
 
 import (
-	"os"
 	"io"
+	"os"
 )
 
 func main() {
-	file,err := os.Create("./tmp.txt")
+	file, err := os.Create("./tmp.txt")
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-	writers := []io.Writer {
+	writers := []io.Writer{
 		file,
 		os.Stdout,
 	}
