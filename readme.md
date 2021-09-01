@@ -2,11 +2,9 @@
 
 ## 线上go语言学习资源
 
-[前景 · Go语言中文文档 (topgoer.com)](http://topgoer.com/)
+[(topgoer.com)](http://topgoer.com/)
 
-[首页 - Go语言中文网 - Golang中文社区 (studygolang.com)](https://studygolang.com/)
-
-[地鼠文档 (topgoer.cn)](http://www.topgoer.cn/)
+[Go语言中文网电子书](https://books.studygolang.com/)
 
 ## go语言面试题整理
 
