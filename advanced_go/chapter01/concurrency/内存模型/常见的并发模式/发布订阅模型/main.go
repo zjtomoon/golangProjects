@@ -10,10 +10,4 @@ func main() {
 	defer p.Close()
 
 	all := p.Subscribe()
-	golang := p.SubscribeTopic(func(v interface{}) bool {
-		if s,ok := v.(string); ok {
-			return strings.Contains(s,"golang")
-		}
-		return false
-	})
 }
