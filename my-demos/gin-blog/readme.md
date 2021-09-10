@@ -1,10 +1,12 @@
 # gin实战-基于gin实现动态博客
 
+[视频地址](https://www.bilibili.com/video/av73698322?t=2400&p=5)
+
 ## 一、项目结构 
 
 + model：实体 
 
-+ dao：数据层 
++ database：数据层 
 
 + service：业务逻辑 
 
@@ -23,3 +25,10 @@
 + category：分类表
 + comment：评论表
 + leave：留言表
+
+## 工具使用技巧
++ 快速格式化
+
+vscode : shift + alt + F
+
+goland : ctrl + alt + l
