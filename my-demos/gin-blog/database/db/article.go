@@ -23,3 +23,57 @@ func InsertArticle(article *model.ArticleDetail) (articleId int64, err error) {
 }
 
 //获取文章列表，做个分页
+func GetArticleList(pageNum, pageSize int) (articleList []*model.ArticleInfo, err error) {
+	if pageNum < 0 || pageSize <= 0 {
+		return
+	}
+	//时间降序排序
+	sqlstr := `select 
+				id,summary,title,view_count,create_time,comment_time,username,category_id
+				from
+					article
+				where
+					status = 1
+				order by create_time desc
+				limit ?,?`
+	err = DB.Select(&articleList, sqlstr, pageNum, pageSize)
+	return
+}
+
+//根据文章id,查询单个文章详情
+func GetArticleDetail(articleId int64) (articleDetail *model.ArticleDetail, err error) {
+	if articleId < 0 {
+		return
+	}
+	articleDetail = &model.ArticleDetail{}
+	sqlstr := `select
+					id,summary,title,view_count,content,create_time,comment_count,username,category_id
+				from
+					article
+				where
+					id = ?
+				and
+					status = 1
+				`
+	err = DB.Get(&artcileDetail, sqlstr, articleId)
+	return
+}
+
+//根据分类id,查询这一类的文章
+func GetArticleListByCategoryId(categoryId, pageNum, pageSize int) (articleList []*model.ArticleInfo, err error) {
+	if pageNum < 0 || pageSize <= 0 {
+		return
+	}
+	sqlstr := `select
+					id,summary,title,view_count,create_time,comment_count,username,category_id
+				from
+					article
+				where
+					status =1
+				and
+					category_id = ?
+				order by create_time desc
+				limit ?,?`
+	err = DB.Select(&articleList, sqlstr, categoryId, pageNum, pageSize)
+	return
+}
