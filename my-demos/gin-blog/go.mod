@@ -1,4 +1,4 @@
-module golangProjects/my-demos/gin-blog
+module gin-blog
 
 go 1.13
 

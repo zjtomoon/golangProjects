@@ -1,8 +1,8 @@
 package db
 
 import (
+	"gin-blog/model"
 	_ "github.com/go-sql-driver/mysql"
-	"golangProjects/my-demos/gin-blog/model"
 )
 
 //插入文章

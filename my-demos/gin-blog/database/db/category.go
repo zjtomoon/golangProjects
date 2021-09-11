@@ -1,8 +1,8 @@
 package db
 
 import (
+	"gin-blog/model"
 	"github.com/jmoiron/sqlx"
-	"golangProjects/my-demos/gin-blog/model"
 )
 
 //添加分类

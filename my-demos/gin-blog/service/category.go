@@ -1,8 +1,8 @@
 package service
 
 import (
-	"golangProjects/my-demos/gin-blog/database/db"
-	"golangProjects/my-demos/gin-blog/model"
+	"gin-blog/database/db"
+	"gin-blog/model"
 )
 
 //获取所有分类
