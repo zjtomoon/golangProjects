@@ -9,7 +9,7 @@ import (
 
 func main() {
 	router := gin.Default()
-	dns := "root:admin@tcp(192.168.56.101:3306)/bloggger?parseTime=true"
+	dns := "root:123@tcp(192.168.56.101:3306)/bloggger?parseTime=true"
 	err := db.Init(dns)
 	if err != nil {
 		fmt.Println(err)
