@@ -55,7 +55,7 @@ func GetArticleDetail(articleId int64) (articleDetail *model.ArticleDetail, err 
 				and
 					status = 1
 				`
-	err = DB.Get(&artcileDetail, sqlstr, articleId)
+	err = DB.Get(&articleDetail, sqlstr, articleId)
 	return
 }
 

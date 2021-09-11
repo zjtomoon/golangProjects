@@ -1,7 +1,7 @@
 package db
 
 import (
-	"golangProjects/my-demos/gin-blog/model"
+	"gin-blog/model"
 	"testing"
 	"time"
 )
