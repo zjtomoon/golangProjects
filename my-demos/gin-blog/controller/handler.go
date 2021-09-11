@@ -22,6 +22,7 @@ func IndexHandle(c *gin.Context) {
 		c.HTML(http.StatusInternalServerError, "views/500.html", nil)
 	}
 
+	//gin.H本质上是一个map
 	//分配数据
 	//var data map[string]interface{} = make(map[string]interface{})
 	//data["article_list"] = articleRecordList
@@ -34,7 +35,7 @@ func IndexHandle(c *gin.Context) {
 	})
 }
 
-//点击分类就进行分类
+//点击分类云进行分类
 func CategoryList(c *gin.Context) {
 	categoryIdStr := c.Query("category_id")
 	categoryId, err := strconv.ParseInt(categoryIdStr, 10, 64)
