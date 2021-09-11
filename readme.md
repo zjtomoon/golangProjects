@@ -2,8 +2,6 @@
 
 ## 线上go语言学习资源
 
-[(topgoer.com)](http://topgoer.com/)
-
 [Go语言中文网电子书](https://books.studygolang.com/)
 
 ## go语言面试题整理
