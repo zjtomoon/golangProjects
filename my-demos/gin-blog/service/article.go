@@ -59,7 +59,7 @@ forloop1:
 
 // 根据多个文章的id,获取多个分类id的集合
 func getCategoryIds(articleInfoList []*model.ArticleInfo) (ids []int64) {
-LABLE:
+LABEL:
 	// 遍历文章，得到每个文章
 	for _, article := range articleInfoList {
 		// 从当前文章取出分类id
@@ -68,7 +68,7 @@ LABLE:
 		for _, id := range ids {
 			//看当前id是否存在
 			if id == categoryId {
-				continue LABLE //结束当前article的执行，继续下一个article的执行
+				continue LABEL //结束当前article的执行，继续下一个article的执行
 			}
 		}
 		ids = append(ids, categoryId)
