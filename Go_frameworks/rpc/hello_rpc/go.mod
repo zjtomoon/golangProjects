@@ -1,4 +1,4 @@
-module golangProjects/Go_frameworks/rpc/hello_rpc
+module golangProjects/Go_frameworks/rpc/hello_rpc_server
 
 go 1.13
 

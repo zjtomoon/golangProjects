@@ -8,14 +8,14 @@ import (
 )
 
 var (
-	addr = flag.String("addr","localhost:8080","server address")
+	addr = flag.String("addr", "localhost:8080", "server address")
 )
 
 func main() {
 	flag.Parse()
 
 	s := server.NewServer()
-	s.RegisterName("Arith",new(example.Arith),"")
-	s.Register(new(example.Arith),"")
-	s.Serve("tcp",*addr)
+	s.RegisterName("Arith", new(example.Arith), "")
+	s.Register(new(example.Arith), "")
+	s.Serve("tcp", *addr)
 }
