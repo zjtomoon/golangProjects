@@ -25,6 +25,3 @@ go get -u -v -tags "reuseport quic kcp zookeeper etcd consul ping" github.com/sm
 ```
 
 
-
-[rcpx-examples](https://github.com/rpcxio/rpcx-examples.git)
-
