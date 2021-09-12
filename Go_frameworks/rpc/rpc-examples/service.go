@@ -1,4 +1,4 @@
-package rpc_examples
+package example
 
 import (
 	"context"
