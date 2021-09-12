@@ -2,7 +2,15 @@
 
 ## 线上go语言学习资源
 
-[Go语言中文网电子书](https://books.studygolang.com/)
+[Go语言博客实践 旧版 · Go语言博客实践 (studygolang.com)](https://books.studygolang.com/Go-Blog-In-Action/)
+
+[Go by Example 中文 (studygolang.com)](https://books.studygolang.com/gobyexample/)
+
+[Go Patterns · Go Patterns (studygolang.com)](https://books.studygolang.com/go-patterns/)
+
+[Introduction · XORM操作指南 (studygolang.com)](https://books.studygolang.com/xorm/)
+
+[Go Web 示例 (studygolang.com)](https://books.studygolang.com/gowebexamples/)
 
 ## go语言面试题整理
 
