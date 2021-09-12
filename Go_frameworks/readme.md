@@ -2,9 +2,6 @@
 
 ## 分类
 
-- [ ] gin
 - [ ] rpc
-- [ ] GoFrame
-- [ ] kratos
 - [ ] xorm
 
