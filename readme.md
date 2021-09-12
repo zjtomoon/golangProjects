@@ -76,3 +76,10 @@ vscode : shift + alt + F
 
 goland : ctrl + alt + l
 
+# 面试要点
+
++ go语言原型
++ gin源码
++ rpc框架
++ 并发MPG模型
++ web编程中串联处理器和处理器函数
