@@ -10,3 +10,11 @@
 + 多路复用器也是处理器。比如，ServeMux就是一个HTTP请求多路复用器，它接受HTTP请求并根据请求中的URL将请求重定向到正确的处理器。DefaultServeMux是ServeMux的一个公开的实例，这个实例会被用作默认的多路复用器。
 + Go 1.6或以上的版本中，net/http标准库默认支持HTTP/2。
 
+## 第四章 处理请求
+
++ Request结构的Form、PostForm和MultipartFrom字段可以让用户更容易地提取出请求中的不同数据：用户只要调用ParseForm方法或者ParseMultipartForm方法对请求进行语法分析，然后访问相应的字段，就可以取得请求中包含的数据。
++ Form字段存储的是来自URL以及HTML表单的URL编码数据，Post字段存储的是来自HTML表单的URL编码数据，而MultipartForm字段存储的则是来自URL以及HTML表单的multipart编码数据。
++ 服务器通过向ResponseWriter写入首部和主体来向客户端返回响应。
++ 通过向ResponseWriter写入cookie,服务器可以将数据持久地存储在客户端上。
++ cookie可以用于实现闪现消息。
+
