@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"os"
 	"time"
 	"xorm.io/xorm"
+	"xorm.io/xorm/log"
 )
 
 type User struct {
@@ -18,21 +20,17 @@ type User struct {
 }
 
 func main() {
-	engine, _ := xorm.NewEngine("mysql", "root:123@/test?charset=utf8")
-
-	user1 := &User{}
-	has, _ := engine.ID(1).Exist(user1)
-	if has {
-		fmt.Println("user with id=1 exist")
-	} else {
-		fmt.Println("user with id=1 not exist")
+	engine, _ := xorm.NewEngine("mysql", "root:123:@/test?charset=utf8")
+	f, err := os.Create("sql.log")
+	if err != nil {
+		panic(err)
 	}
 
-	user2 := &User{}
-	has, _ = engine.Where("name=?", "dj2").Get(user2)
-	if has {
-		fmt.Println("user with name = dj2 exist")
-	} else {
-		fmt.Println("user with name = dj2 not exist")
-	}
+	engine.SetLogger(log.NewSimpleLogger(f))
+	engine.Logger().SetLevel(log.LOG_DEBUG)
+	engine.ShowSQL(true)
+
+	user := &User{}
+	engine.ID(1).Omit("created", "updated").Get(user)
+	fmt.Printf("user:%v\n", user)
 }

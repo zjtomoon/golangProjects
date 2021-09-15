@@ -1,4 +1,4 @@
-module golangProjects/go_community_Lib/xorm/xorm_logger
+module golangProjects/go_community_Lib/xorm/xorm_Exist
 
 go 1.13
 
