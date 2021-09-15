@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"time"
 	"xorm.io/xorm"
@@ -17,7 +18,7 @@ type User struct {
 }
 
 func main() {
-	engine,err := xorm.NewEngine("mysql","root:123@/test?charset=utf8")
+	engine, err := xorm.NewEngine("mysql", "root:123@/test?charset=utf8")
 
 	if err != nil {
 		log.Fatal(err)
