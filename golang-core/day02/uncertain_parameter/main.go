@@ -30,6 +30,7 @@ func main(){
 	fmt.Println(res)
 
 	fmt.Println("============")
+	//suma和sumb的类型并不一样
 	fmt.Printf("%T\n",suma)
 	fmt.Printf("%T\n",sumb)
 }
