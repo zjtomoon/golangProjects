@@ -10,6 +10,7 @@ func main(){
 		}
 	}()
 
+	//只有最后一次panic调用能够被捕获
 	defer func(){
 		panic("first defer panic")
 	}()
