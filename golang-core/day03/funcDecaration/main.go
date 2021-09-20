@@ -11,8 +11,12 @@ import "fmt"
 func add(a,b int) int {
 	return a + b
 }
+//新定义函数类型ADD
+//ADD底层类型是函数字面值类型 func (int,int) int
 type ADD func(int,int) int
 
+//add和ADD的底层类型相同，并且add是字面量类型
+//所以add可以直接赋值给ADD类型的变量g
 var g ADD = add
 func main() {
 	f := func(a,b int) int {

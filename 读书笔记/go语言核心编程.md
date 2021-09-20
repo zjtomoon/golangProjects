@@ -284,7 +284,49 @@ recover（）用来捕获 pan ic ，阻止 panic 继续向上传递 recover （�
 
 [methodSet06](../golang-core/day03/methodSet06/main.go)
 
+### 函数类型
+
+[funcDecaration](../golang-core/day03/funcDecaration/main.go)
+
 ## 第四章 接口 day04
+### 4.1.1接口声明
+
+### 4.1.2接口初始化
++ 实例赋值接口
++ 接口变量赋值接口变量
+
+### 4.1.3接口方法调用
+
+[interfaceTest01](../golang-core/day04/interfaceTest01/main.go)
+
+### 4.2.1 类型断言
+
+[interfaceTypeAssertion](../golang-core/day04/interfaceTypeAssertion/main.go)
+
+[interfaceTest01](../golang-core/day04/interfaceTest02/main.go)
+
+### 4.2.2类型查询
+
+[TypeSwitches](../golang-core/day04/TypeSwitches/main.go)
+
+[TypeSwitches02](../golang-core/day04/TypeSwitches02/main.go)
+
+### 4.2.3接口优点和使用形式
++ 接口优点
+(1)解耦：复杂系统进行垂 和水平的分割是常用的设计手段，在层与层之间使用接口进
+行抽象和解辑是 种好的编程策略 Go 的非侵入式的接口使层与层之间的代码更加干净，
+类型和实现的接口之间不需要显式声明，增加了接口使用的自由度
+(2)实现泛型：由于现阶段 Go 语言还不支持泛型，使用空接口作为函数或方法参数能够
+用在需要泛型的场景中
++ 接口使用形式
+(1) 作为结构内嵌字段。
+(2) 作为函数或方法的形参。
+(3) 作为函数或方法的返回值。
+(4) 作为其他接口定义的嵌入字段。
+
+### 空接口和nil
+
+
 ## 第五章 并发 day05
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
