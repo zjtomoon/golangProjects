@@ -422,8 +422,16 @@ goroutine有如下特性
 + Go没有暴露goroutine id给用户，所以不能在一个goroutine里面显式地操作另一个goroutine,不过runetime包
 提供了一些访问和设置goroutine的相关信息。
 
+1.func GoMAXPROCS 用来设置或查询可以并发执行的goroutine数目，n大于1表示设置GOMAXPROCS值，否则表示当前的GOMAXPROCS值
 
+[goMaxProcs](../golang-core/day05/goMaxProcs/main.go)
 
+2.func Goexit
+func Goexit()是结束当前goroutine的运行，Goexit在结束当前goroutine运行之前会调用当前goroutine已经注册的defer。
+Goexit并不会产生panic。所以该goroutine defer里面的recover调用都返回nil。
+
+3.func Gosched
+func Gosched()是放弃当前调度执行机会，将当前goroutine放到队列中等待下次被调度。
 
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
