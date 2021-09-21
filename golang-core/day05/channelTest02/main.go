@@ -17,9 +17,12 @@ func main() {
 		c <- struct{}{}
 	}(c, ci)
 
+	//NumGoroutine可以返回当前程序的goroutine数目
 	println("NmGoroutinue=", runtime.NumGoroutine())
 
 	//读通道c，通过通道进行同步等待
+	<- c
+	//此时ci通道已经关闭，匿名函数启动的goroutine已经退出
 	println("NumGrotinue=", runtime.NumGoroutine())
 
 	//但通道ci还可以继续读取

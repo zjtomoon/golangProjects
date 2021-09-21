@@ -433,6 +433,26 @@ Goexit并不会产生panic。所以该goroutine defer里面的recover调用都�
 3.func Gosched
 func Gosched()是放弃当前调度执行机会，将当前goroutine放到队列中等待下次被调度。
 
+###5.1.3 chan
+
+Go的哲学是“不要通过共享内存来通信，而是通过通信来共享内存”。通道是Go通过通信来共享内存的载体。
+
+[channelTest01](../golang-core/day05/channelTest01/main.go)
+
+goroutine运行结束后退出，写到缓冲通道中的数据不会消失，它可以缓冲和适配两个goroutine处理速率不一致的情况，
+缓冲通道和消息队列类似，有削峰和增大吞吐量的功能。
+
+[channelTest02](../golang-core/day05/channelTest02/main.go)
+
+操作不同状态的chan会引发三种行为。
+panic
++ (1)向已经关闭的通道写数据会导致panic
+     + 最佳实践是由写入者关闭通道，能最大程度地避免向已经关闭的通道写数据而导致的panic  
+(2)重复关闭的通道会导致panic
+
+
+
+
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
 ### 7.5 值、指针和引用
