@@ -335,8 +335,80 @@ Go语言没有泛型，如果一个函数需要接收任意类型的参数，则
 
 [null-Interface](../golang-core/day04/null-Interface/main.go)
 
+### 4.4.1 接口内部实现-数据结构
+
+非空接口的底层数据结构是iface
+```go
+    //src/runtime/runtime2.go
+    type iface struct {
+    	tab  *itab //itab存放类型及方法指针信息
+    	data unsafe.Pointer //数据信息
+    }
+```
+可以看到iface结构，有两个指针类型字段
++ itab:用来存放接口自身类型和绑定的实例类型及实例相关的函数指针
++ 数据指针data:指向接口绑定的实例的副本，接口的初始化也是一种值拷贝
+
+itab数据结构
+```go
+    //src/runtime/runtime2.go
+    type itab struct {
+    	inter *interfacetype //接口自身的静态类型
+    	_type *_type //_type就是接口存放的具体实例的类型(动态类型)
+    	hash  uint32 //hash存放具体类型的Hash值
+    	_     [4]byte
+    	fun   [1]uintpr
+    }
+```
+itab有5个字段
++ inner是指向接口类型元信息的指针
++ _type是指向接口存放的具体类型元信息的指针，iface里的data指针指向的是该类型的值。一个是类型信息，另一个是类型的值。
++ hash是具体类型的Hash值,_type里面也有hash,这里冗余存放主要是为了接口断言或类型查询时快速访问
++ fun是一个函数指针
+
+Go语言类型元信息最初由编译器负责构建，并以表的形式存放在编译后的对象文件中，再由链接器在链接时进行段合并、符号重定向。
+这些类型信息在接口的动态调用和反射中被运行时引用。
+接口的类型元信息的数据结构：
+
+```go
+    //描述接口的类型
+    type interfacetype struct {
+    	typ     _type //类型通用部分
+    	pkgpath name //接口所属包的名字信息，name内存放的不仅有名称，还有描述信息
+    	mhdr    []imethd //接口的方法
+    }
+    //接口方法元信息
+    type imethod struct {
+    	name nameOff //方法名在编译后的section里面的偏移量
+    	ityp typeOff //方法类型在编译后的section里面的偏移量
+    }
+```
+### 4.4.4 空接口数据结构
+```go
+    //src/runtime/runtime2.go
+    
+    //空接口
+    type eface struct {
+    	_type *_type
+    	data unsafe.Pointer
+    }
+```
+从eface的数据结构可以看出，空接口不是真的为空，其保留了具体实例的类型和值拷贝，即便存放的具体类型是空的，
+空接口也不是空的。
+由于空接口自身没有方法集，所以空接口变量实例化后的真正用途不是接口方法的动态调用。空接口在go语言中真正的意义是
+`支持多态`。有如下几种方式使用了空接口(将空接口类型还原)
+(1) 通过接口类型断言
+(2) 通过接口类型查询
+(3) 通过反射
 
 ## 第五章 并发 day05
+### 5.1.1 并发和并行
+并发和并行是两个不同的概念：
++ 并行意味着程序在任意时刻都是同时运行的
++ 并发意味着程序在单位时间内是同时运行的
+### 5.1.2 goroutine
+
+
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
 ### 7.5 值、指针和引用
