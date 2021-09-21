@@ -407,6 +407,22 @@ Go语言类型元信息最初由编译器负责构建，并以表的形式存放
 + 并行意味着程序在任意时刻都是同时运行的
 + 并发意味着程序在单位时间内是同时运行的
 ### 5.1.2 goroutine
++ 通过go + 匿名函数形式启动goroutine
+[goroutineTest01](../golang-core/day05/goroutineTest01/main.go)
+
++ 通过go + 有名函数形式启动goroutine
+[goroutineTest02](../golang-core/day05/goroutineTest02/main.go)
+
+goroutine有如下特性
++ go 的执行是非阻塞的，不会等待。
++ go后面的函数返回值会被忽略。
++ 调度器不能保证多个goroutine的执行次序。
++ 没有父子goroutine的概念，所有的goroutine是平等地调度和执行的。
++ Go程序在执行时会单独为main函数创建一个goroutine,遇到其他go关键字时再去创建其他的goroutine。
++ Go没有暴露goroutine id给用户，所以不能在一个goroutine里面显式地操作另一个goroutine,不过runetime包
+提供了一些访问和设置goroutine的相关信息。
+
+
 
 
 ## 第六章 反射 day06
