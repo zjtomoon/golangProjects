@@ -20,6 +20,7 @@ func GenerateIntA() chan int {
 
 func main() {
 	ch := GenerateIntA()
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
+	for i := 0 ; i < 10 ; i++{
+		fmt.Println(<- ch)
+	}
 }

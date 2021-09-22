@@ -448,9 +448,51 @@ goroutine运行结束后退出，写到缓冲通道中的数据不会消失，�
 panic
 + (1)向已经关闭的通道写数据会导致panic
      + 最佳实践是由写入者关闭通道，能最大程度地避免向已经关闭的通道写数据而导致的panic  
-(2)重复关闭的通道会导致panic
++ (2)重复关闭的通道会导致panic
 
+阻塞
++ (1)向未初始化的通道写数据或读数据都会导致当前goroutine的永久阻塞
++ (2)向缓冲区已满的通道写入数据会导致goroutine阻塞
++ (3)通道中没有数据，读取该通道会导致
 
+非阻塞
++ (1)读取已经关闭的通道不会引发阻塞，而是立即返回通道元素类型的零值，可以使用comma,ok语法判断通道是否关闭
++ (2)向有缓冲且没有满的通道读/写不会引发阻塞
+
+### 5.1.4 waitGroup
+WaitGroup用来等待多个goroutine完成，main goroutine调用Add设置需要等待goroutine的数目，
+每一个goroutine结束时调用Done(),Wait()被main用来等待所有的goroutine完成。
+
+[waitGroup](../golang-core/day05/waitGroup/main.go)
+
+### 5.1.5 select
+
+[select](../golang-core/day05/select/main.go)
+
+### 5.1.6 扇入(Fan in)和扇出(Fan out)
+
+### 5.1.7 通知退出机制
+读取已经关闭的通道不会引起阻塞，也不会导致panic,而是立即返回该通道存储类型的零值。
+关闭select监听的某个通道能使select立即感知这种通知，然后进行相应的处理，这就是所谓的`退出通知机制`。
+
+[CloseChanneltoBroadcast](../golang-core/day05/CloseChanneltoBroadcast/main.go)
+
+### 5.2.1 生成器
++ (1) 最简单的带缓冲的生成器，例如：
+
+[generatorTest01](../golang-core/day05/generatorTest01/main.go)
+
++ (2) 多个goroutine增强型生成器，例如：
+
+[generatorTest02](../golang-core/day05/generatorTest02/main.go)
+
++ (3) 有时希望生成器能够自动退出，可以借助Go通道的退出机制实现。例如：
+
+[generatorTest03](../golang-core/day05/generatorTest03/main.go)
+
++ (4) 一个融合了并发、缓冲、退出通知等多重特性的生成器。例如：
+
+[generatorTest04](../golang-core/day05/generatorTest04/main.go)
 
 
 ## 第六章 反射 day06

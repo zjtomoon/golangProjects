@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math/rand"
 	"runtime"
+	"time"
 )
 
 //GenerateIntA是一个随机数生成器
@@ -37,6 +38,7 @@ func main() {
 	fmt.Println(<-ch)
 	fmt.Println(<-ch)
 	//此时生产者已经退出
+	time.Sleep(2* time.Second)
 	println("NumGoroutinue=", runtime.NumGoroutine())
 
 }
