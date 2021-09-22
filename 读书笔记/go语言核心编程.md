@@ -502,7 +502,16 @@ WaitGroup用来等待多个goroutine完成，main goroutine调用Add设置需要
 
 ### 5.2.3 每个请求一个goroutine
 
+以计算100个自然数的和来举例，将计算任务拆分为多个task,每个task启动一个goroutine进行处理，程序实例代码如下
 
+[goRoutineTest03](../golang-core/day05/goRoutineTest03/main.go)
+
+程序的逻辑分析：
++ (1) InitTask函数构建task并发送到task通道中。
++ (2) 分发任务函数DistributeTask为每个task启动一个goroutine处理任务，等待其处理完成，然后关闭结果通道。
++ (3) ProcessResult函数读取并统计所有的结果。
+
+这几个函数分别在不同的goroutine中运行，它们通过通道和sync.WaitGroup进行通信和同步。
 
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
