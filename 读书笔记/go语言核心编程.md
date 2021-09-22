@@ -494,6 +494,15 @@ WaitGroup用来等待多个goroutine完成，main goroutine调用Add设置需要
 
 [generatorTest04](../golang-core/day05/generatorTest04/main.go)
 
+### 5.2.2 管道
+通道可以分为两个方向，一个是读，一个是写，假如一个函数的输入参数和输出参数是相同的chan类型，则该函数可以调用自己，
+最终形成一个调用链。
+
+[pipeTest](../golang-core/day05/pipeTest/main.go)
+
+### 5.2.3 每个请求一个goroutine
+
+
 
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
