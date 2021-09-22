@@ -513,6 +513,21 @@ WaitGroup用来等待多个goroutine完成，main goroutine调用Add设置需要
 
 这几个函数分别在不同的goroutine中运行，它们通过通道和sync.WaitGroup进行通信和同步。
 
+### 5.2.4 固定worker工作池
+
+服务器编程中使用最多的就是通过线程池来提升服务的并发处理能力。在Go语言编程中，一样可以轻松地构建固定数目的
+goroutine作为工作线程池。下面以计算多个整数的和为例来说明这种并发范式。
+
+程序除了主要的main goroutine,还开启了如下几类goroutine:
++ (1) 初始化任务的goroutine
++ (2) 分发任务的goroutine
++ (3) 等待所有worker结束通知，然后关闭结果通道的goroutine。
+
+程序采用三个通道，分别是：
++ (1) 传递task任务的通道
++ (2) 传递task结果的通道
++ (3) 接收worker处理完任务后所发送通知的通道。
+
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
 ### 7.5 值、指针和引用
