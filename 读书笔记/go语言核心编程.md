@@ -553,6 +553,53 @@ future模式的基本工作原理:
 
 future最大的好处是将函数的同步调用转换为异步调用，适用于一个交易需要多个子调用且这些子调用没有依赖的场景。
 
+### 5.3.1 context的设计目的
+context库的设计目的就是跟踪goroutine调用树，并在这些goroutine调用树种传递通知和元数据。两个目的：
++ (1) 退出通知机制——通知可以传递给整个goroutine调用树上得每一个goroutine。
++ (2) 传递数据——数据可以传递给整个goroutine调用树上地每一个goroutine
+
+###5.3.2 context基本数据结构
+
+context包的整体工作机制:
+
+第一个创建Context的goroutine被称为root节点。root节点负责创建一个实现Context接口的具体对象，并将该对象作为
+参数传递到其新拉起的goroutine,下游的goroutine可以继续封装该对象，再传递到更下游的goroutine。Context对象
+在传递的过程中最终形成一个树状的数据结构，这样通过位于root节点(树的根节点)的Context对象就能遍历整个Context对象树，
+通知和消息就可以通过root节点传递出去，实现了上游goroutine对下游goroutine的消息传递。
+
++ Context接口
+
+Context是一个基本接口，所有的Context对象都要实现该接口，context的使用者在调用接口中都使用了Context作为参数类型。
++ canceler接口
+
+canceler接口是一个扩展接口，规定了取消通知的Context具体类型需要实现的接口，context包中的具体类型*cancelCtx和*timerCtx都实现了该接口
+
++ empty Context接口
+
+emptyCtx 实现了Context接口，但不具备任何功能，因为其所有的方法都是空实现。其存在的目的是作为Context对象树的根(root节点)。
+因为context包的使用思路就是不停地调用context包提供的包装函数来创建具有特殊功能的Context实例，每一个Context实例
+的创建都以上一个Context对象为参数，最终形成一个树状的结构。
+
++ cancelCtx
+
+cancelCtx是一个实现了Context接口的具体类型，同时实现了canceler接口。cancel具有退出通知方法。
+
++ timerCtx
+
+timerCtx是一个实现了Context接口的具体类型，内部封装了cancelCtx类型实例，同时有一个deadline变量，用来实现定时退出通知。
+
++ valueCtx
+
+valueCtx是一个实现了Context接口的具体类型，内部封装了Context接口类型，同时封装了一个k/v的存储变量。
+valueCtx可用来传递通知信息。
+
+[contextLib01](../golang-core/day05/contextLib01/Context.go)
+
+### 5.3.3 API函数
+
+
+
+
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
 ### 7.5 值、指针和引用
