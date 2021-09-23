@@ -597,8 +597,36 @@ valueCtx可用来传递通知信息。
 
 ### 5.3.3 API函数
 
+With包装函数用来构建不同功能的Context具体对象。
+
++ (1) 创建一个带有退出通知的Context具体对象，内部创建一个cancelCtx的类型实例。
+
+```go
+func WithCancel(parent Context) (ctx Context,cancel CancelFunc)
+```
+
++ (2) 创建一个带有超时通知的Context具体对象，内部创建一个timeCtx的类型实例。
+
+```go
+    func WithDeadline(parent Context,deadline time.Time) (Context,CancelFunc)
+```
+
++ (3) 创建一个带有超时通知的Context具体对象，内部创建一个timeCtx的类型实例。
+
+```go
+    func WithTimeout(parent Context,timeout time.Duration) (Context,CancelFunc)
+```
+
++ (4) 创建一个能够传送数据的Context具体对象，内部创建一个valueCtx的类型实例。
+
+```go
+    func WithValue(parent Context,key,val interface{}) Context
+```
+
+### 5.3.5 context的用法
 
 
+ 
 
 ## 第六章 反射 day06
 ## 第七章 语言陷阱 day07
