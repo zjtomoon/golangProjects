@@ -627,6 +627,27 @@ func WithCancel(parent Context) (ctx Context,cancel CancelFunc)
 
 [contextLib02](../golang-core/day05/contextLib02/main.go)
 
+使用Context包的一般流程：
++ (1) 创建一个Context根函数
+    ```go
+      func Background() Context
+      func TODO() Context
+    ```
++ (2) 包装上一步创建的Context对象，使其具有特定的功能。
+
+这些包函数是context package的核心，几乎所有的封装都是从包装函数开始的。原因是，使用Context包的核心就是使用期退出通知广播功能。
+
++ (3) 将上一步创建的对象作为实参传给后续启动的并发函数(通常作为函数的第一个参数),每个并发函数内部可以继续使用包装函数对传进来的
+Context对象进行包装，添加自己所需的功能。
+
++ (4) 顶端的goroutine在超时后调用cancel退出通知函数，通知后端的所有goroutine释放资源。
+
++ (5) 后端的goroutine通过select监听Context.Done()返回的chan，及时响应前端goroutine的退出通知，一般停止本次处理，释放所占用的资源。
+
+### 5.3.6 使用context传递数据的争议
+
+
+
  
 
 ## 第六章 反射 day06
