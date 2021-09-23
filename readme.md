@@ -63,7 +63,6 @@
 + redis、sqlite项目完成后分离到新建的github仓库，并发布linux(ubuntu14、centos7)、windows(windows 7)release版本
 + 学习kubernetes 1.15.11源码 自己编写
 + k8s项目完成后分离到新建的github仓库，并发布linux(ubuntu14、centos7)、windows(windows 7)release版本
-+ 开发一个web后端框架，借鉴gin和goji框架，内置ORM、微服务、RPC功能
 
 
 
