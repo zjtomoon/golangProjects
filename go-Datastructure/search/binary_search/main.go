@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	//arr := []int{1,2,3,4,5,6,7,8,9,10}
-	arr := []int{1, 2, 7, 9, 3, 10, 3, 8, 5, 4, 6}
+	arr := []int{1, 2, 7, 9, 3, 10, 8, 5, 4, 6}
 	QuickSort(0, len(arr)-1, arr)
 	fmt.Println(arr)
 	k := 9
