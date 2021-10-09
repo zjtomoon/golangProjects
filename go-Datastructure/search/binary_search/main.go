@@ -23,3 +23,13 @@ func BinarySearch(s []int,k int) int {
 	}
 	return -1
 }
+
+func QuickSort(left int,right int,arr *[...]int)  {
+	l,r := left,right
+	privot := arr[(left + right)/2]
+	temp := 0
+
+	for l < r {
+
+	}
+}
