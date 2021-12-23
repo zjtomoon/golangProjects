@@ -57,16 +57,15 @@ func main() {
 	c1 = make(chan job, 40)
 	c2 = make(chan chan job, 5)
 	curJob = make([]job, 40)
-	
-	go initJob()
-	insertJob()
-	insertJob()
-	insertJob()
-	insertJob()
-	insertJob()
 
 	go initJob()
+	for i := 0; i < 5; i++ {
+		insertJob()
+	}
+	go initJob()
 	work()
+
 	time.Sleep(time.Second * 20)
+
 	fmt.Println("ok")
 }
