@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"golangProjects/advanced_go/chapter01/concurrency/memory-mode/common_memory-mode/publish_subscribe-mode/pubsub"
 	"strings"
 	"time"
-	"golangProjects/advanced_go/chapter01/concurrency/memory-mode/common_memory-mode/publish_subscribe-mode/pubsub"
 )
 
 func main() {

@@ -16,3 +16,4 @@ func main() {
 
 	mu.Lock()
 }
+//两次加锁

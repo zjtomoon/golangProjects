@@ -10,8 +10,10 @@ func aGoroutine()  {
 
 func main() {
 	go aGoroutine()
+	//println(done)
 	<- done
 	println(msg)
+	//println(done)
 }
 /*
 	若在关闭通道后继续从中接收数据，接收者就会收到该通道返回的零值。

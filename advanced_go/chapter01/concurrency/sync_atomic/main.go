@@ -18,6 +18,7 @@ func worker(wg *sync.WaitGroup)  {
 	var i uint64
 	for i = 0 ; i <= 100 ; i++ {
 		atomic.AddUint64(&total,i)
+		//atomic.AddUint64函数保证了total的读取、更新和保存是一个原子操作，因此在多线程中访问也是安全的
 	}
 }
 
