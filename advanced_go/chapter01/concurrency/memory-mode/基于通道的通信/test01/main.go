@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 var done = make(chan bool)
 var msg string
 
@@ -12,4 +14,5 @@ func main() {
 	go aGoroutine()
 	<- done
 	println(msg)
+	fmt.Println(done)
 }
