@@ -1,4 +1,4 @@
-package test01
+package main
 
 import (
 	"context"
@@ -7,26 +7,26 @@ import (
 	"time"
 )
 
-func worker(ctx context.Context,wg *sync.WaitGroup) error {
+func worker(ctx context.Context, wg *sync.WaitGroup) error {
 	defer wg.Done()
 
 	for {
 		select {
 		default:
 			fmt.Println("hello")
-		case <- ctx.Done():
+		case <-ctx.Done():
 			return ctx.Err()
 		}
 	}
 }
 
 func main() {
-	ctx,cancel := context.WithTimeout(context.Background(),10 * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
 	var wg sync.WaitGroup
-	for i := 0 ; i < 10 ; i++ {
+	for i := 0; i < 10; i++ {
 		wg.Add(1)
-		go worker(ctx,&wg)
+		go worker(ctx, &wg)
 	}
 
 	time.Sleep(time.Second)

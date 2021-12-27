@@ -7,7 +7,7 @@ import (
 
 //我们通过select和default分支可以很容易实现一个Goroutine的退出控制
 
-func worker(channel chan bool)  {
+func worker(channel chan bool) {
 	for {
 		select {
 		default:
@@ -24,5 +24,5 @@ func main() {
 	go worker(channel)
 
 	time.Sleep(time.Second)
-	channel <- true
+	channel <- true //提供一个停止的信号
 }
