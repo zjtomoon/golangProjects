@@ -34,3 +34,7 @@ func main() {
 
 	wg.Wait()
 }
+
+/*
+	context包用来简化对于处理单个请求的多个goroutine之间与请求域的数据、超时和退出等操作。
+*/
