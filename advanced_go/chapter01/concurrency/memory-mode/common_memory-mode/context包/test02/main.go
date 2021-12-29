@@ -43,7 +43,7 @@ func main() {
 	ctx,cancel := context.WithCancel(context.Background())
 
 	ch := GenerateNatural(ctx) //自然数序列：2，3，4，...
-	for i := 0 ; i < 100 ; i++ {
+	for i := 0 ; i < 1000 ; i++ {
 		prime := <- ch //新出现的素数
 		fmt.Printf("%v : %v\n",i+1,prime)
 		ch = PrimeFilter(ctx,ch,prime) //基于新素数构造的过滤器
