@@ -9,6 +9,8 @@ import (
 	"net/url"
 )
 
+//go语言实现反向代理
+
 func NewProxy(targetHost string) (*httputil.ReverseProxy, error) {
 	url, err := url.Parse(targetHost)
 	if err != nil {
