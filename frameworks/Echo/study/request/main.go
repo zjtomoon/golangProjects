@@ -21,6 +21,7 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 	return cv.validator.Struct(i)
 }
 
+//Echo 没有内置的数据验证功能，但是可以通过 Echo#Validator 和第三方库来注册一个数据验证器。
 func main() {
 	e := echo.New()
 	e.Validator = &CustomValidator{validator: validator.New()}
