@@ -7,6 +7,8 @@ import (
 
 func main() {
 	e := echo.New()
+
+	//使用（基本认证）中间件
 	e.Use(middleware.BasicAuth(func(username string, password string, context echo.Context) (bool, error) {
 		if username == "joe" && password == "secret" {
 			return true, nil
