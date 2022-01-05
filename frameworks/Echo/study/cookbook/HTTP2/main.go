@@ -47,3 +47,6 @@ func main() {
 //多路复用，所有的请求都是通过一个 TCP 连接并发完成。
 //对消息头采用 HPACK 进行压缩传输，能够节省消息头占用的网络的流量。
 //Server Push：服务端能够更快的把资源推送给客户端。
+
+//生成一个自签名的 X.509 TLS 证书(HTTP/2 需要 TLS 才能运行)
+//go run $GOROOT/src/crypto/tls/generate_cert.go --host localhost
