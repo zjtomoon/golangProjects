@@ -10,4 +10,11 @@ go get -u -v github.com/gogf/gf
 
 + 手动安装安装GoFrame-cli
 
-安装包位于阿里云盘: 重装系统/sdks/go
+下载github release
+
++ go get安装
+
+```bash
+    go install github.com/gogf/gf-cli/v2@latest
+```
+
