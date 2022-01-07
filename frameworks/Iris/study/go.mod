@@ -6,11 +6,20 @@ require (
 	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/CloudyKit/jet/v3 v3.0.1 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20210630161223-536fa16abd6f // indirect
+	github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible // indirect
+	github.com/dgraph-io/badger v1.6.0 // indirect
+	github.com/etcd-io/bbolt v1.3.3 // indirect
+	github.com/gavv/httpexpect v2.0.0+incompatible // indirect
+	github.com/gomodule/redigo v1.7.1-0.20190724094224-574c33c3df38 // indirect
+	github.com/hashicorp/go-version v1.2.0 // indirect
+	github.com/iris-contrib/blackfriday v2.0.0+incompatible // indirect
 	github.com/iris-contrib/jade v1.1.4 // indirect
+	github.com/iris-contrib/middleware/jwt v0.0.0-20211207164801-081c558a02bb // indirect
+	github.com/iris-contrib/pongo2 v0.0.1 // indirect
 	github.com/iris-contrib/schema v0.0.6 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kataras/golog v0.1.7 // indirect
-	github.com/kataras/iris/v12 v12.1.8
+	github.com/kataras/iris/v12 v12.2.0-alpha5
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.17 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
