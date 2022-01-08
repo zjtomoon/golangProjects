@@ -7,6 +7,7 @@ beego 的安装是典型的 Go 安装包的形式：
 ```bash
 # v1
 go get -u github.com/astaxie/beego
+go get -u github.com/beego/beego
 # v2
  go get -u github.com/beego/beego/v2
 ```
