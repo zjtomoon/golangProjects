@@ -9,15 +9,15 @@ import (
 
 type User struct {
 	gorm.Model
-	Name         string
-	Age          int64
-	Birthday     time.Time
-	Email        string  `gorm:"type:varchar(100);unique_index"`
-	Role         string  `gorm:"size:255"`
-	MemberNumber *string `gorm:"unique;not null"`
-	Num          int     `gorm:"AUTO_INCREMENT"`
-	Address      string  `gorm:"index:addr"` // 给Address 创建一个名字是  `addr`的索引
-	IgnoreMe     int     `gorm:"_"`          //忽略这个字段
+	Name     string
+	Age      int64
+	Birthday time.Time
+	Email    string `gorm:"type:varchar(100);unique_index"`
+	Role     string `gorm:"size:255"`
+	//MemberNumber *string `gorm:"unique;not null"`
+	Num      int    `gorm:"AUTO_INCREMENT"`
+	Address  string `gorm:"index:addr"` // 给Address 创建一个名字是  `addr`的索引
+	IgnoreMe int    `gorm:"_"`          //忽略这个字段
 }
 
 //type User struct {
@@ -42,12 +42,12 @@ func main() {
 	defer db.Close()
 
 	//创建
-	user := User{Name:"Jinzhu",Age:18,Birthday:time.Now()}
+	user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
 	db.NewRecord(user) // => 返回 `true` ，因为主键为空
 	db.Create(&user)
-	db.NewRecord(user)  // => 在 `user` 之后创建返回 `false`
+	db.NewRecord(user) // => 在 `user` 之后创建返回 `false`
 
-	var animal = Animal{Age:99,Name:""}
+	var animal = Animal{Age: 99, Name: ""}
 	db.Create(&animal)
 	// INSERT INTO animals("age") values('99');
 	// SELECT name from animals WHERE ID=111; // 返回的主键是 111
@@ -64,8 +64,7 @@ func main() {
 	//获取所有的记录 SELECT * FROM users;
 	db.Find(&user)
 	//通过主键进行查询 (仅适用于主键是数字类型)  SELECT * FROM users WHERE id = 10;
-	db.First(&user,10)
-	db.Find(&user,10)
+	db.First(&user, 10)
+	db.Find(&user, 10)
 
-	
 }

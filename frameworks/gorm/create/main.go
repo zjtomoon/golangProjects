@@ -3,20 +3,21 @@ package main
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"time"
 )
 
 type User struct {
 	gorm.Model
-	Name         string
-	Age          int64
-	Birthday     time.Time
-	Email        string  `gorm:"type:varchar(100);unique_index"`
-	Role         string  `gorm:"size:255"`
-	MemberNumber *string `gorm:"unique;not null"`
-	Num          int     `gorm:"AUTO_INCREMENT"`
-	Address      string  `gorm:"index:addr"` // 给Address 创建一个名字是  `addr`的索引
-	IgnoreMe     int     `gorm:"_"`          //忽略这个字段
+	Name     string
+	Age      int64
+	Birthday time.Time
+	Email    string `gorm:"type:varchar(100);unique_index"`
+	Role     string `gorm:"size:255"`
+	//MemberNumber *string `gorm:"unique;not null"`
+	Num      int    `gorm:"AUTO_INCREMENT"`
+	Address  string `gorm:"index:addr"` // 给Address 创建一个名字是  `addr`的索引
+	IgnoreMe int    `gorm:"_"`          //忽略这个字段
 }
 
 type Animal struct {
@@ -35,11 +36,15 @@ func main() {
 	defer db.Close()
 
 	//创建
+	db.DropTableIfExists(&User{})
+	db.CreateTable(&User{})
 	user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
 	db.NewRecord(user) // => 返回 `true` ，因为主键为空
 	db.Create(&user)
 	db.NewRecord(user) // => 在 `user` 之后创建返回 `false`
 
+	db.DropTableIfExists(&Animal{})
+	db.CreateTable(&Animal{})
 	var animal = Animal{Age: 99, Name: ""}
 	db.Create(&animal)
 	// INSERT INTO animals("age") values('99');

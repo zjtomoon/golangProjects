@@ -3,20 +3,21 @@ package main
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"time"
 )
 
 type User struct {
 	gorm.Model
-	Name         string
-	Age          int64
-	Birthday     time.Time
-	Email        string  `gorm:"type:varchar(100);unique_index"`
-	Role         string  `gorm:"size:255"`
-	MemberNumber *string `gorm:"unique;not null"`
-	Num          int     `gorm:"AUTO_INCREMENT"`
-	Address      string  `gorm:"index:addr"` // 给Address 创建一个名字是  `addr`的索引
-	IgnoreMe     int     `gorm:"_"`          //忽略这个字段
+	Name     string
+	Age      int64
+	Birthday time.Time
+	Email    string `gorm:"type:varchar(100);unique_index"`
+	Role     string `gorm:"size:255"`
+	//MemberNumber *string `gorm:"unique;not null"`
+	Num      int    `gorm:"AUTO_INCREMENT"`
+	Address  string `gorm:"index:addr"` // 给Address 创建一个名字是  `addr`的索引
+	IgnoreMe int    `gorm:"_"`          //忽略这个字段
 }
 
 //type User struct {
@@ -83,4 +84,55 @@ func main() {
 
 	//Between
 	db.Where("created_at Between ? AND ?", "lastweek", "today").Find(&user)
+
+	//Struct & Map
+	db.Where(&User{Name: "jinzhu", Age: 20}).First(&user)
+	//// SELECT * FROM users WHERE name = "jinzhu" AND age = 20 LIMIT 1;
+
+	// Map
+	db.Where(map[string]interface{}{"name": "jinzhu", "age": 20}).Find(&user)
+	//// SELECT * FROM users WHERE name = "jinzhu" AND age = 20;
+
+	//多主键 slice 查询
+	db.Where([]int64{20, 21, 22}).Find(&user)
+	//// SELECT * FROM users WHERE id IN (20, 21, 22);
+
+	db.Where(&User{Name: "jinzhu", Age: 0}).Find(&user)
+	//SELECT * FROM users WHERE name = "jinzhu";
+
+	//Not
+	db.Not("name", "jinzhu").First(&user)
+	//// SELECT * FROM users WHERE name <> "jinzhu" LIMIT 1;
+
+	//不包含
+	db.Not("name", []string{"jinzhu", "jinzhu 2"}).Find(&user)
+	//// SELECT * FROM users WHERE name NOT IN ("jinzhu", "jinzhu 2");
+
+	//不在主键slice中
+	db.Not([]int64{1, 2, 3}).First(&user)
+	//// SELECT * FROM users WHERE id NOT IN (1,2,3);
+
+	db.Not([]int64{}).First(&user)
+	//// SELECT * FROM users;
+
+	//原生sql
+	db.Not("name = ?", "jinzhu").First(&user)
+	//// SELECT * FROM users WHERE NOT(name = "jinzhu");
+
+	//struct
+	db.Not(User{Name: "jinzhu"}).First(&user)
+	// SELECT * FROM users WHERE name <> "jinzhu";
+
+	//Or
+
+	db.Where("role = ?", "admin").Or("role = ?", "super_admin").Find(&user)
+	//// SELECT * FROM users WHERE role = 'admin' OR role = 'super_admin';
+
+	//Struct
+	db.Where("name = 'jinzhu'").Or(User{Name: "jinzhu 2"}).Find(&user)
+	//// SELECT * FROM users WHERE name = 'jinzhu' OR name = 'jinzhu 2';
+
+	//Map
+	db.Where("name = 'jinzhu'").Or(map[string]interface{}{"name": "jinzhu 2"}).Find(&user)
+
 }
