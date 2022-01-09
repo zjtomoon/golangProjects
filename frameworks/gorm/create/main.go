@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+//GORM 默认使用 ID 作为主键名。
+//  `gorm:"primary_key"`
 type User struct {
 	gorm.Model
 	Name     string

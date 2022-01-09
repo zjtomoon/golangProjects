@@ -135,4 +135,14 @@ func main() {
 	//Map
 	db.Where("name = 'jinzhu'").Or(map[string]interface{}{"name": "jinzhu 2"}).Find(&user)
 
+	//行内条件查询
+
+	//// 通过主键进行查询 (仅适用于主键是数字类型)
+	db.First(&user, 23)
+	//// SELECT * FROM users WHERE id = 23 LIMIT 1;
+
+	//非数字类型的主键查询
+	db.First(&user, "id = ?", "string_primary_key")
+	//// SELECT * FROM users WHERE id = 'string_primary_key' LIMIT 1;
+
 }
