@@ -52,4 +52,5 @@ func main() {
 	// INSERT INTO animals("age") values('99');
 	// SELECT name from animals WHERE ID=111; // 返回的主键是 111
 	// animal.Name => 'galeone'
+	db.Save(&user)
 }
