@@ -73,5 +73,26 @@ func main() {
 	var opts []grpc.ServerOption
 
 	//TLS认证
-	creds, err := credentials.NewServerTLSFromFile("../../")
+	creds, err := credentials.NewServerTLSFromFile("../keys/server.pem", "../keys/server.key")
+	if err != nil {
+		grpclog.Fatalf("Failed to generate credentials %v", err)
+	}
+
+	opts = append(opts, grpc.Creds(creds))
+
+	//注册interceptor
+	opts = append(opts, grpc.UnaryInterceptor(interceptor))
+
+	//实例化grpc server
+	s := grpc.NewServer(opts...)
+
+	//注册HelloService
+	pb.RegisterHelloServer(s, helloService)
+
+	grpclog.Println("Listen on " + Address + " with TLS + Token + Interceptor")
+
+	fmt.Println("Listen on " + Address + " with TLS + Token + Interceptor")
+
+	s.Serve(listen)
+
 }

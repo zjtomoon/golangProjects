@@ -1,3 +1,10 @@
+# 制作私钥
+openssl genrsa -out server.key 2048
+openssl ecparam -genkey -name secp384r1 -out server.key
+
+#自前面公钥
+openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
+
 # 生成公钥
  openssl genrsa -out rsa_private_key.pem 1024
 # 生成私钥
