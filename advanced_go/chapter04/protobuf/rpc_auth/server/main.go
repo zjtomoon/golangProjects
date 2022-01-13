@@ -19,6 +19,8 @@ func ServeHelloService(conn net.Conn) {
 	p.ServeConn(conn)
 }
 
+//为RPC服务增加简单的登陆状态的验证：
+//这样可以要求在客户端链接RPC服务时，首先要执行登陆操作，登陆成功后才能正常执行其他的服务。
 func (p *HelloService) Login(request string, reply *string) error {
 	if request != "user:password" {
 		log.Println("login failed")
