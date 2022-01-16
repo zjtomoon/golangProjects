@@ -28,6 +28,7 @@ type RouteGuideClient interface {
 	ListFeatures(ctx context.Context, in *Rectangle, opts ...grpc.CallOption) (RouteGuide_ListFeaturesClient, error)
 	//client side streaming
 	RecordRoute(ctx context.Context, opts ...grpc.CallOption) (RouteGuide_RecordRouteClient, error)
+	//bidirectional streaming 双向流
 	Recommend(ctx context.Context, opts ...grpc.CallOption) (RouteGuide_RecommendClient, error)
 }
 
@@ -155,6 +156,7 @@ type RouteGuideServer interface {
 	ListFeatures(*Rectangle, RouteGuide_ListFeaturesServer) error
 	//client side streaming
 	RecordRoute(RouteGuide_RecordRouteServer) error
+	//bidirectional streaming 双向流
 	Recommend(RouteGuide_RecommendServer) error
 	mustEmbedUnimplementedRouteGuideServer()
 }

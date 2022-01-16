@@ -34,7 +34,7 @@ message RouteSummary {
 }
 
 enum RecommendationMode {
-  GetFarthesr = 0;
+  GetFarthest = 0;
   GetNearest = 1;
 }
 
@@ -54,7 +54,6 @@ service RouteGuide {
   rpc RecordRoute(stream Point) returns (RouteSummary) {}
 
   //bidirectional streaming 双向流
-
   rpc Recommend(stream RecommendationRequest) returns (stream Feature) {}
 
 }
