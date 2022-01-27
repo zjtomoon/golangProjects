@@ -26,3 +26,7 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
      go mod tidy
      go run greet.go -f etc/greet-api.yaml
 ```
+
+# 官方文档
+
+[go-zero官方文档](https://go-zero.dev/cn/)
