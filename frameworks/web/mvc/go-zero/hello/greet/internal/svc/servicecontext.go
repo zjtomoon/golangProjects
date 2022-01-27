@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"golangProjects/frameworks/go-zero/hello/greet/internal/config"
+	"golangProjects/frameworks/web/mvc/go-zero/hello/greet/internal/config"
 )
 
 type ServiceContext struct {

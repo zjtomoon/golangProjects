@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"golangProjects/frameworks/go-zero/hello/greet/internal/config"
-	"golangProjects/frameworks/go-zero/hello/greet/internal/handler"
-	"golangProjects/frameworks/go-zero/hello/greet/internal/svc"
+	"golangProjects/frameworks/web/mvc/go-zero/hello/greet/internal/config"
+	"golangProjects/frameworks/web/mvc/go-zero/hello/greet/internal/handler"
+	"golangProjects/frameworks/web/mvc/go-zero/hello/greet/internal/svc"
 
 	"github.com/tal-tech/go-zero/core/conf"
 	"github.com/tal-tech/go-zero/rest"

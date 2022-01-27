@@ -1,5 +1,5 @@
-module golangProjects/frameworks/go-zero/hello/greet
+module golangProjects/frameworks/web/mvc/go-zero/hello/greet
 
-go 1.13
+go 1.15
 
-require github.com/tal-tech/go-zero v1.2.3
+require github.com/tal-tech/go-zero v1.2.5

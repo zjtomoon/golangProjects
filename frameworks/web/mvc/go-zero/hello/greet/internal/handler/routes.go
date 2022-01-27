@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	"golangProjects/frameworks/go-zero/hello/greet/internal/svc"
+	"golangProjects/frameworks/web/mvc/go-zero/hello/greet/internal/svc"
 
 	"github.com/tal-tech/go-zero/rest"
 )
@@ -14,13 +14,8 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/users/id/:userId",
-				Handler: GetUserHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/users/create",
-				Handler: CreateUserHandler(serverCtx),
+				Path:    "/from/:name",
+				Handler: GreetHandler(serverCtx),
 			},
 		},
 	)
