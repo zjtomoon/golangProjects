@@ -13,4 +13,5 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%s,%d\n", p, n)
+	fmt.Println(cap(p))
 }

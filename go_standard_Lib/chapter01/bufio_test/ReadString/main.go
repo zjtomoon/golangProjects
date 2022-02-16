@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	"strings"
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -12,7 +12,7 @@ func main() {
 	fmt.Printf("the line:%s\n", line)
 	// 这里可以换上任意的 bufio 的 Read/Write 操作
 	n, _ := reader.ReadString('\n')
-	fmt.Printf("the line:%s\n", line)
+	fmt.Printf("the line:%s\n", n)
 	fmt.Println(string(n))
 }
 
