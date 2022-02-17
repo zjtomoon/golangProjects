@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	//环形链表
 	ring1 := ring.New(3)
 
 	for i := 1; i <= 3; i++ {
