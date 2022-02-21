@@ -15,11 +15,12 @@ go get -u github.com/beego/beego
 ## bee工具的使用
 
 ### bee 工具的安装
+
 您可以通过如下的方式安装 bee 工具：
+
 ```bash
 #v1
 go get -u github.com/beego/bee
 #v2
 go get -u github.com/beego/bee/v2
 ```
-
