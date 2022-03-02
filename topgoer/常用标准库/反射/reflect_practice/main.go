@@ -31,6 +31,6 @@ func pareseFile2(filename string) {
 }
 
 func main() {
-	//parseFile("./config.ini")
-	pareseFile2("./config.ini")
+	parseFile("./config.ini")
+	//pareseFile2("./config.ini")
 }
