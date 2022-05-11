@@ -3,6 +3,7 @@ package models
 import (
 	"dm8-driver/dao"
 	"github.com/encircles/gorm-dm8"
+
 	//"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -17,7 +18,7 @@ func init() {
 	//db, err = gorm.Open(mysql.Open(dns), &gorm.Config{})
 	//todo: 参考文档： https://eco.dameng.com/docs/zh-cn/app-dev/go-go.html
 
-	dns := "dm://SYSDBA:PASSWORD@127.0.0.1:5236?ignoreCase=false&appName=wisdom&statEnable=false"
+	dns := "dm://SYSDBA:123456789@127.0.0.1:5236?ignoreCase=false&appName=wisdom&statEnable=false"
 	db, err = gorm.Open(dm8.Open(dns), &gorm.Config{})
 	if err != nil {
 		//panic("failed to connect to database")
